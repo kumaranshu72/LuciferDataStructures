@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define all(v) v.begin(), v.end()
+using namespace std;
+ll mx = 1e18;
+vector<ll> v;
+ll g(ll x) {
+	if (!x)
+		return 0;
+	return upper_bound(all(v), x) - v.begin() + (ll)sqrt(x);
+}
+int main(int argc, char *argv[]) {
+	for (ll i = 2; i * i * i <= mx; i++) {
+		ll j = i*i;
+		while (j <= mx / i) {
+			j *= i;
+			ll s = sqrt(j);
+			if (s * s != j)
+				v.push_back(j);
+		}
+	}
+	sort(all(v));
+	v.erase(unique(all(v)), v.end());
+	ll q, l, r;
+	scanf("%lld", &q);
+	while (q--) {
+		scanf("%lld %lld", &l, &r);
+		printf("%lld\n", g(r) - g(l - 1));
+	}
+}
