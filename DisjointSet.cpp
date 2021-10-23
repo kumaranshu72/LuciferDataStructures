@@ -57,6 +57,7 @@ int main(){
         cout<<i<<" "<<ds.Find(i)<<"\n"; // displays parent of i'th indes is ds.Find(i)
                                         // alternatively we can say that those that have same ds.find() values belong to same set
     }
+    return 0;
 }
 
 
